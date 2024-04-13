@@ -1,3 +1,5 @@
+import { commentService } from "../services/CommentService"
+
 class CommentController {
     async getComments(req, res, next) {
         try {
@@ -17,7 +19,13 @@ class CommentController {
 
     async createComment(req, res, next) {
         try {
+            const { text } = req.body
 
+            const { id } = req.user
+
+            const commentData = await commentService.createComment(id, text)
+
+            return res.json(commentData)
         } catch (e) {
             next(e)
         }
