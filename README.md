@@ -1,2 +1,2 @@
-* This is repository for JS Server project by TSU *
+* This is repository for JS Server project by TSU 
   
