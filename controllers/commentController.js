@@ -1,9 +1,10 @@
-import { commentService } from "../services/CommentService"
+import { commentService } from '../services/CommentService.js'
 
 class CommentController {
     async getComments(req, res, next) {
         try {
-
+            const comments = await commentService.getAllComments()
+            return res.json(comments)
         } catch (e) {
             next(e)
         }
