@@ -1,5 +1,5 @@
-import { tokenService } from "../services/TokenService.js"
-import { UserDto } from "../dtos/UserDto.js"
+import { tokenService } from '../services/TokenService.js'
+import { UserDto } from '../dtos/UserDto.js'
 
 export default async (user) => {
     const userDto = new UserDto(user)
