@@ -15,3 +15,13 @@ export const registerValidation = [
         )
 
 ]
+
+export const commentValidation = [
+    body(
+        'text',
+        'Текст комментария должен быть не менее 5 и не более 500 символов'
+    ).isLength({
+        min: 5,
+        max: 500,
+    }),
+]

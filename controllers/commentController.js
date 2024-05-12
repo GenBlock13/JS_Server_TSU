@@ -1,6 +1,5 @@
 import { commentService } from '../services/CommentService.js'
 import { ApiError } from '../exceptions/ApiError.js'
-
 class CommentController {
     async getComments(req, res, next) {
         try {
@@ -13,8 +12,12 @@ class CommentController {
 
     async getComment(req, res, next) {
         try {
+            const { commentId } = req.param
 
-        } catch(e) {
+            const comment = await commentService.findComment(commentId)
+
+            return res.json(comment)
+        } catch (e) {
             next(e)
         }
     }
@@ -43,7 +46,15 @@ class CommentController {
 
     async updateComment(req, res, next) {
         try {
-
+            const { text } = req.body
+            const { id } = req.user
+            const { commentId }  = req.param
+            const comment = await commentService.findComment(commentId)
+            if (comment.userId != id) {
+                throw ApiError.forbidden()
+            }
+            const commentData = await commentService.updateComment(commentId, text)
+            return res.json(commentData)
         } catch (e) {
             next(e)
         }
