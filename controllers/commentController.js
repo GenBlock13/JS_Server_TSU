@@ -1,5 +1,5 @@
-
 import { commentService } from '../services/CommentService.js'
+import { ApiError } from '../exceptions/ApiError.js'
 
 class CommentController {
     async getComments(req, res, next) {
