@@ -1,3 +1,4 @@
+import { ApiError } from '../exceptions/ApiError.js'
 import { Comment } from '../models/Comment.js'
 import getUsername from '../utils/getUsername.js'
 
