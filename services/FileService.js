@@ -7,12 +7,20 @@ class FileService {
         }
     }
 
+    uploadMultiImg(files) {
+        const filesUrl = files
+        ? files.map((img) => `uploads/${img.filename}`)
+        : []
+        return filesUrl
+    }
+
     uploadImages(thumb, gallery) {
         // адрес расположения миниатюры
-        const thumbUrl = `uploads/${thumb.filename}`
+        const thumbUrl = thumb ? `uploads/${thumb.filename}` : ''
         // адреса расположения всех загруженных фотографий
         // с полем gallery
-        const galleryUrl = gallery.map((img) => `uploads/${img.filename}`)
+        const galleryUrl = gallery ? gallery.map((img) => `uploads/${img.filename}`)
+        : []
         return {
             thumbUrl,
             galleryUrl
